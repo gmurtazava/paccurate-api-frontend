@@ -6,7 +6,6 @@ import './form.css'
 
 const Form = (props) => {
   const [boxValues, setBoxValues] = useState([{ id: uuid() }]);
-  const API_ENDPOINT = "http://localhost:8000";
 
   const changeHandler = (event, id, attr) => {
     setBoxValues((previousValues) => {
@@ -56,7 +55,7 @@ const Form = (props) => {
       boxTypeSets: [props.method],
     };
 
-    const res = await axios.post(API_ENDPOINT + "/pack", payload, {
+    const res = await axios.post(process.env.REACT_APP_API_ENDPOINT + "/pack", payload, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
