@@ -6,12 +6,11 @@ import parse from "html-react-parser";
 
 function Analytics() {
   const [data, setData] = useState([]);
-  const API_ENDPOINT = "http://localhost:8000";
 
   useEffect(() => getData(), []);
 
   const getData = () => {
-    axios.get(API_ENDPOINT + "/analyze").then((res) => setData(res.data));
+    axios.get(process.env.REACT_APP_API_ENDPOINT + "/analyze").then((res) => setData(res.data));
   };
   
   let count = 0;
